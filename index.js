@@ -17,10 +17,11 @@ bot.on("ready", () => {
 });
 
 bot.on("message", (msg) => {
-  if (msg.mentions.users.first().username === "lieDetector") {
+  if (
+    msg.mentions.users.first().username &&
+    msg.mentions.users.first().username === "lieDetector"
+  ) {
     msg.reply(messages[Math.floor(Math.random() * messages.length)]);
-  } else {
-    console.log("all good");
   }
 });
 
