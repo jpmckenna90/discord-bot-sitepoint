@@ -10,8 +10,6 @@ app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
 
-
-
 bot.login(TOKEN);
 
 bot.on("ready", () => {
@@ -21,6 +19,8 @@ bot.on("ready", () => {
 bot.on("message", (msg) => {
   if (msg.mentions.users.first().username === "lieDetector") {
     msg.reply(messages[Math.floor(Math.random() * messages.length)]);
+  } else {
+    console.log("all good");
   }
 });
 
