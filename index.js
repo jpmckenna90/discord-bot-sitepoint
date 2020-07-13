@@ -17,11 +17,10 @@ bot.on("ready", () => {
 });
 
 bot.on("message", (msg) => {
-  if (
-    msg.mentions.users.first().username &&
-    msg.mentions.users.first().username === "lieDetector"
-  ) {
-    msg.reply(messages[Math.floor(Math.random() * messages.length)]);
+  if (msg.mentions.users.size) {
+    if (msg.mentions.users.first().username === "lieDetector") {
+      msg.reply(messages[Math.floor(Math.random() * messages.length)]);
+    }
   }
 });
 
@@ -34,4 +33,5 @@ const messages = [
   "does Renly shit in the grass?",
   "If lying is cool, consider him Miles Davis",
   "liar.com/bigfatliar/omgwhataliar",
+  "Yeah, and Matt's an asshole"
 ];
