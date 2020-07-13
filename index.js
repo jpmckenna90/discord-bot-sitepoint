@@ -4,11 +4,13 @@ const express = require("express");
 const app = express();
 const bot = new Discord.Client();
 const TOKEN = process.env.TOKEN;
-const PORT = 3030 || process.env.PORT;
+const PORT = process.env.PORT || 3030;
 
 app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
+
+
 
 bot.login(TOKEN);
 
