@@ -5,6 +5,10 @@ const app = express();
 const bot = new Discord.Client();
 const TOKEN = process.env.TOKEN;
 const PORT = process.env.PORT || 3030;
+const cron = require("cron");
+const fetch = require("node-fetch");
+
+const url = "https://young-peak-21891.herokuapp.com/";
 
 app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
@@ -22,7 +26,11 @@ bot.on("message", (msg) => {
       msg.reply(messages[Math.floor(Math.random() * messages.length)]);
     }
   }
+
+  // if(msg.)
 });
+
+bot.on("");
 
 const messages = [
   "lol yea",
@@ -33,5 +41,18 @@ const messages = [
   "does Renly shit in the grass?",
   "If lying is cool, consider him Miles Davis",
   "liar.com/bigfatliar/omgwhataliar",
-  "Yeah, and Matt's an asshole"
+  "Yeah, and Matt's an asshole",
+  "natch",
 ];
+
+(() => {
+  const cronJob = cron.CronJob("0 */25 * * * *", () => {
+    fetch(url)
+      .then((res) =>
+        console.log(`response-ok: ${res.ok}, status: ${res.status}`)
+      )
+      .catch((err) => console.log(err));
+  });
+
+  cronJob.start();
+})();
