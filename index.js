@@ -26,11 +26,11 @@ bot.on("message", (msg) => {
       msg.reply(messages[Math.floor(Math.random() * messages.length)]);
     }
   }
-
-  // if(msg.)
 });
 
-// bot.on("");
+app.get("/", (req, res) => {
+  res.send("hello");
+});
 
 const messages = [
   "lol yea",
